@@ -1,0 +1,104 @@
+﻿@using OnlineTicariOtomasyon.Models.Siniflar
+@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    .table-container {
+        margin-top: 20px;
+        max-width: 100%; /* Tablonun konteynerine göre genişlemesi */
+        overflow-x: auto; /* Mobil için kaydırma çubuğu*/
+    }
+
+    .table-bordered {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+        border-radius: 8px;
+    }
+
+        .table-bordered th, .table-bordered td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table-bordered th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-transform: uppercase; /* Daha okunaklı başlıklar*/
+        }
+
+        .table-bordered tbody tr:hover {
+            background-color: #f9f9f9; /* Hover efekti*/
+        }
+
+        .table-bordered button {
+            border: none;
+            padding: 8px 12px;
+            margin: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Geçiş animasyonu */
+            color: white;
+        }
+
+            .table-bordered button.delete {
+                background-color: #dc3545;
+            }
+
+                .table-bordered button.delete:hover {
+                    background-color: #c82333;
+                }
+
+            .table-bordered button.update {
+                background-color: #28a745;
+            }
+
+                .table-bordered button.update:hover {
+                    background-color: #218838;
+                }
+
+    .add-button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px; /* Alt boşluk */
+    }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+</style>
+<div class="table-container">
+    <table class="table table-bordered" style="margin-top:20px">
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>
+                    @k.Kategoriid
+                </td>
+                <td>
+                    @k.KategorAd
+                </td>
+                <td><a href="/Kategori/KategoriSil/@k.Kategoriid" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Kategori/KategoriGetir/@k.Kategoriid" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    </div>
+    <a href="/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
+
