@@ -10,6 +10,7 @@ namespace OnlineTicariOtomasyon.Models.Siniflar
     public class Kategori
     {
         [Key]
+        [Display(Name = "Kategori")]
         public int Kategoriid { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
