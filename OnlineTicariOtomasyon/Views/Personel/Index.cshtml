@@ -1,5 +1,5 @@
 ﻿@using OnlineTicariOtomasyon.Models.Siniflar
-@model List<Urun>
+@model List<Personel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -78,35 +78,30 @@
             background-color: #0056b3;
         }
 </style>
-<br />
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>ÜRÜN</th>
-        <th>MARKA</th>
-        <th>STOK</th>
-        <th>ALIŞ FİYAT</th>
-        <th>SATIŞ FİYAT</th>
-        <th>KATEGORİ</th>
-        <th>GÖRSEL</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
-    </tr>
-    @foreach (var u in Model)
-    {
+<div class="table-container">
+    <table class="table table-bordered" style="margin-top:20px">
         <tr>
-            <td>@u.Urunid</td>
-            <td>@u.UrunAd</td>
-            <td>@u.Marka</td>
-            <td>@u.Stok</td>
-            <td>@u.AlisFiyat</td>
-            <td>@u.SatisFiyat</td>
-            <td>@u.Kategori.KategorAd</td>
-            <td>@u.UrunGörsel</td>
-            <td><a href="/Urun/UrunSil/@u.Urunid" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Urun/UrunGetir/@u.Urunid" class="btn btn-success">Güncelle</a></td>
+            <th>ID</th>
+            <th>PERSONEL ADI</th>
+            <th>PERSONEL SOYAD</th>
+            <th>GÖRSEL</th>
+            <th>DEPARTMAN</th>
+            <th>GÜNCELLE</th>
+            <th>SATIŞLAR</th>
         </tr>
-    }
-</table>
-<a href="/Urun/YeniUrun/" class="btn btn-info">Yeni Ürün</a>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.Personelid</td>
+                <td>@k.PersonelAd</td>
+                <td>@k.PersonelSoyad</td>
+                <td>@k.PersonelGörsel</td>
+                <td>@k.Departman.DepartmanAd</td>
+                <td><a href="/Personel/PersonelGetir/@k.Personelid" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Departman/DepartmanPersonelSatis/@k.Personelid" class="btn btn-default" style="background-color:lightcoral; color:white">Satışlar</a></td>
+            </tr>
+        }
+    </table>
+</div>
+<a href="/Personel/PersonelEkle" class="btn btn-primary">Personel Ekle</a>
 
