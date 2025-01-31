@@ -1,0 +1,23 @@
+﻿@model OnlineTicariOtomasyon.Models.Siniflar.Yapilacak
+@{
+    ViewBag.Title = "YapilacakGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personel Güncelleme Ekranı</h2>
+<br />
+@using (Html.BeginForm("YapilacakGuncelle", "Yapilacak", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Yapilacakid)
+        @Html.LabelFor(x => x.Baslik)
+        @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Tarih)
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-default" style="background-color:yellowgreen">Güncelle</button>
+    </div>
+}
+
