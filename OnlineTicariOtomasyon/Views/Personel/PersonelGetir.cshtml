@@ -7,7 +7,7 @@
 <br />
 <h2>Personel Güncelleme Ekranı</h2>
 <br />
-@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         @Html.HiddenFor(x => x.Personelid)
@@ -17,11 +17,11 @@
         @Html.LabelFor(x => x.PersonelSoyad)
         @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
         <br />
-        @Html.LabelFor(x => x.PersonelGörsel)
-        @Html.TextBoxFor(x => x.PersonelGörsel, new { @class = "form-control" })
-        <br />
         @Html.LabelFor(x => x.Departman)
         @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.PersonelGörsel)
+        <input type="file" name="PersonelGörsel" class="form-control" />
         <br />
         <button class="btn btn-default" style="background-color:yellowgreen">Güncelle</button>
     </div>

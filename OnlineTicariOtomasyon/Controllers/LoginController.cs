@@ -52,5 +52,26 @@ namespace OnlineTicariOtomasyon.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdminLogin(Admin p)
+        {
+            var bilgiler = c.Admins.FirstOrDefault(x => x.KullanıcıAd == p.KullanıcıAd && x.Sifre == p.Sifre);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.KullanıcıAd, false);
+                Session["KullanıcıAd"] = bilgiler.KullanıcıAd.ToString();
+                return RedirectToAction("Index", "Kategori");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
     }
 }

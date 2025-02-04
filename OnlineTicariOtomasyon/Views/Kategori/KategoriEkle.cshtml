@@ -3,14 +3,28 @@
     ViewBag.Title = "KategoriEkle";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
 <br />
 <h2>Yeni Kategori Sayfası</h2>
 <br />
-<form class="form-group" method="post">
+<form class="form-group" method="post" id="kategoriForm">
     @Html.LabelFor(x => x.KategorAd)
-    @Html.TextBoxFor(x => x.KategorAd, new {@class="form-control"})
+    @Html.TextBoxFor(x => x.KategorAd, new { @class = "form-control" })
     <br />
-    <button class="btn btn-info">Kaydet</button>
+    <button class="btn btn-info" id="Btn1" type="button">Kaydet</button>
+    <script>
+        $('#Btn1').click(function (e) {
+            e.preventDefault(); // Formun submit olmasını engeller
+            swal({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                button: "OK"
+            }).then((value) => {
+                $('#kategoriForm').submit(); // Formu submit eder
+            });
+        });
+    </script>
 </form>
 

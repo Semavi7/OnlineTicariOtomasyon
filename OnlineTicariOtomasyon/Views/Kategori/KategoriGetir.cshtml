@@ -3,18 +3,43 @@
     ViewBag.Title = "KategoriGetir";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <br />
 <h2>Kategori Güncelleme</h2>
 <br />
-@using (Html.BeginForm("KategoriGüncelle", "Kategori", FormMethod.Post))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(x => x.KategorAd)
-                    @Html.TextBoxFor(x => x.KategorAd, new {@class="form-control"})
-                    @Html.HiddenFor(x => x.Kategoriid)
-                </div>
-                <br />
-                <button class="btn btn-warning">Güncelle</button>
-            }
+@using (Html.BeginForm("KategoriGüncelle", "Kategori", FormMethod.Post, new { id = "kategoriForm" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.KategorAd)
+        @Html.TextBoxFor(x => x.KategorAd, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.Kategoriid)
+    </div>
+    <br />
+    <button class="btn btn-warning" id="btn1">Güncelle</button>
+    <script>
+        $(document).ready(function () {
+            console.log("Document is ready");
+            $('#btn1').click(function (event) {
+                event.preventDefault(); // Formun gönderilmesini engelle
+                console.log("Button clicked");
+                swal({
+                    title: "Emin misiniz?",
+                    text: "Bu işlemi geri alamayacaksınız!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            console.log("Form will be submitted");
+                            $('#kategoriForm').submit(); // Formu gönder
+                        } else {
+                            swal("İşlem iptal edildi.");
+                        }
+                    });
+            });
+        });
+    </script>
+}
 
