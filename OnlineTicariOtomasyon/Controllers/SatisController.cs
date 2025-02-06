@@ -42,9 +42,6 @@ namespace OnlineTicariOtomasyon.Content
             ViewBag.dgr1 = deger1;
             ViewBag.dgr2 = deger2;
             ViewBag.dgr3 = deger3;
-            int urunId = int.Parse(deger1.First().Value);
-            decimal satisFiyat = c.Uruns.Where(u => u.Urunid == urunId).Select(u => u.SatisFiyat).FirstOrDefault();
-            ViewBag.dgr4 = satisFiyat;
             return View();
         }
 
