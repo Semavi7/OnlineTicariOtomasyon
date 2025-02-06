@@ -42,6 +42,9 @@ namespace OnlineTicariOtomasyon.Content
             ViewBag.dgr1 = deger1;
             ViewBag.dgr2 = deger2;
             ViewBag.dgr3 = deger3;
+            int urunId = int.Parse(deger1.First().Value);
+            decimal satisFiyat = c.Uruns.Where(u => u.Urunid == urunId).Select(u => u.SatisFiyat).FirstOrDefault();
+            ViewBag.dgr4 = satisFiyat;
             return View();
         }
 
@@ -80,6 +83,13 @@ namespace OnlineTicariOtomasyon.Content
             var deger = c.SatisHarekets.Find(id);
             return View("SatisGetir", deger);
         }
+
+        public JsonResult GetUrunFiyat(int urunId)
+        {
+            var fiyat = c.Uruns.Where(u => u.Urunid == urunId).Select(u => u.SatisFiyat).FirstOrDefault();
+            return Json(fiyat, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult SatisGüncelle(SatisHareket s)
         {

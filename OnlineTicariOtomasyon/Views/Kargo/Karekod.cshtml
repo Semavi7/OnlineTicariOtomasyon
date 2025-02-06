@@ -1,0 +1,20 @@
+﻿@model OnlineTicariOtomasyon.Models.Siniflar.KargoDetay
+@{
+    ViewBag.Title = "Karekod";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<div>
+    @using (Html.BeginForm("Karekod", "Kargo", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.KargoDetayid) 
+        @Html.TextBoxFor(m => m.TakipKodu, new { @class = "form-control", @readonly = "readonly" })
+    }
+    <br />
+    @if (ViewBag.karekodimage != null)
+    {
+        <img src="@ViewBag.karekodimage" alt="" style="width:400px; height:400px" />
+    }
+</div>
+
