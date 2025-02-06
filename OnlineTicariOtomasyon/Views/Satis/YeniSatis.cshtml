@@ -34,50 +34,43 @@
         <input type="number" name="Adet" class="form-control" max="10" min="0" placeholder="Adet Girin" id="txt1" onchange="sum()" />
         <br />
         @Html.LabelFor(x => x.Fiyat)
-        <input type="text" name="Fiyat" class="form-control" id="txt2" onkeyup="sum()" />
+        <input type="text" name="Fiyat" value="" class="form-control" id="txt2" onkeyup="sum()" />
         <br />
         @Html.LabelFor(x => x.ToplamTutar)
         <input type="text" name="ToplamTutar" value="0" class="form-control" id="txt3" readonly />
         <br />
         <button class="btn btn-primary">Kaydet</button>
     </form>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#single-select-field').select2({
-                theme: "bootstrap-5",
-                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            });
-
-            $('#single-select-field1').select2({
-                theme: "bootstrap-5",
-                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            });
-
-            $('#single-select-field2').select2({
-                theme: "bootstrap-5",
-                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            });
-
-            $('#single-select-field').on('change', function () {
-                var urunId = $(this).val();
-                if (urunId) {
-                    $.ajax({
-                        url: '/Satis/GetUrunFiyat',
-                        type: 'GET',
-                        data: { urunId: urunId },
-                        success: function (data) {
-                            console.log("Gelen Fiyat: ", data);
-                            $('#txt2').val(data);
-                            sum();
-                        },
-                        error: function (xhr, status, error) {
-                            console.error("Hata:", error);
-                        }
-                    });
-                }
-            });
+        $('#single-select-field').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
         });
+
+        $('#single-select-field1').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        });
+
+        $('#single-select-field2').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        });
+
+        $(document).ready(function () {
+    $('#single-select-field').change(function () {
+        var urunId = $(this).val();
+        $.ajax({
+            url: '@Url.Action("GetUrunFiyat", "Satis")',
+            type: 'GET',
+            data: { urunId: urunId },
+            success: function (data) {
+                $('#txt2').val(data);
+                sum(); // Toplam tutarı güncellemek için sum() fonksiyonunu çağır
+            }
+        });
+    });
+});
 
         function sum() {
             var sayi1 = document.getElementById('txt1').value;
