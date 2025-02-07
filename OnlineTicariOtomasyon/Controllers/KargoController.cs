@@ -28,6 +28,18 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult YeniKargo()
         {
+            List<SelectListItem> deger1 = (from x in c.Carilers.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CariAd + " " + x.CariSoyad,
+                                               Value = x.Cariid.ToString()
+                                           }).ToList();
+            List<SelectListItem> deger2 = (from x in c.Personels.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.PersonelAd + " " + x.PersonelSoyad,
+                                               Value = x.Personelid.ToString()
+                                           }).ToList();
             Random rnd = new Random();
             string[] karakterler = { "A", "B", "C", "D" };
             int k1, k2, k3;
@@ -40,6 +52,8 @@ namespace OnlineTicariOtomasyon.Controllers
             s3 = rnd.Next(10, 99);
             string kod = s1.ToString() + karakterler[k1] + s2 + karakterler[k2] + s3 + karakterler[k3];
             ViewBag.takipkod = kod;
+            ViewBag.dgr1 = deger1;
+            ViewBag.dgr2 = deger2;
             return View();
         }
 

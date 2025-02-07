@@ -80,7 +80,7 @@ namespace OnlineTicariOtomasyon.Content
             var deger = c.SatisHarekets.Find(id);
             return View("SatisGetir", deger);
         }
-
+        [HttpGet]
         public JsonResult GetUrunFiyat(int urunId)
         {
             var fiyat = c.Uruns.Where(u => u.Urunid == urunId).Select(u => u.SatisFiyat).FirstOrDefault();

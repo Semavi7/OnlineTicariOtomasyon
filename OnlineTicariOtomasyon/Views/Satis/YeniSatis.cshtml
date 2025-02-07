@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
@@ -22,13 +22,13 @@
     <br />
     <form class="form-group" method="post">
         @Html.LabelFor(x => x.Urun)
-        @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-select", id = "single-select-field" })
+        @Html.DropDownListFor(x => x.UrunId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr1), new { @class = "form-select", id = "single-select-field" })
         <br />
         @Html.Label("Cari")
-        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-select", id = "single-select-field1" })
+        @Html.DropDownListFor(x => x.CariId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr2), new { @class = "form-select", id = "single-select-field1" })
         <br />
         @Html.LabelFor(x => x.Personel)
-        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-select", id = "single-select-field2" })
+        @Html.DropDownListFor(x => x.PersonelId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr3), new { @class = "form-select", id = "single-select-field2" })
         <br />
         @Html.LabelFor(x => x.Adet)
         <input type="number" name="Adet" class="form-control" max="10" min="0" placeholder="Adet Girin" id="txt1" onchange="sum()" />
@@ -42,42 +42,49 @@
         <button class="btn btn-primary">Kaydet</button>
     </form>
     <script>
-        $('#single-select-field').select2({
-            theme: "bootstrap-5",
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        });
 
-        $('#single-select-field1').select2({
-            theme: "bootstrap-5",
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        });
+    $('#single-select-field').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: "Bir Seçim Yapın",
+    });
 
-        $('#single-select-field2').select2({
-            theme: "bootstrap-5",
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        });
+    $('#single-select-field1').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: "Bir Seçim Yapın",
+    });
 
+    $('#single-select-field2').select2({
+        theme: "bootstrap-5",
+        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+        placeholder: "Bir Seçim Yapın",
+    });
+       
     $('#single-select-field').change(function () {
         var urunId = $(this).val();
+
         $.ajax({
             url: '@Url.Action("GetUrunFiyat", "Satis")',
             type: 'GET',
+            dataType: "json",
+            contentType: "application/json",
             data: { urunId: urunId },
             success: function (data) {
                 $('#txt2').val(data);
-                sum(); // Toplam tutarı güncellemek için sum() fonksiyonunu çağır
-            }
+                sum();
+            },
         });
     });
-});
 
-        function sum() {
-            var sayi1 = document.getElementById('txt1').value;
-            var sayi2 = document.getElementById('txt2').value;
-            var sonuc = parseInt(sayi1) * parseInt(sayi2);
-            if (!isNaN(sonuc)) {
-                document.getElementById('txt3').value = sonuc;
-            }
-        }
+
+function sum() {
+    var sayi1 = document.getElementById('txt1').value;
+    var sayi2 = document.getElementById('txt2').value;
+    var sonuc = parseInt(sayi1) * parseInt(sayi2);
+    if (!isNaN(sonuc)) {
+        document.getElementById('txt3').value = sonuc;
+    }
+}
     </script>
 </body>
