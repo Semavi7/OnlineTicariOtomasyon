@@ -8,6 +8,7 @@ using OnlineTicariOtomasyon.Models.Siniflar;
 
 namespace OnlineTicariOtomasyon.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         Context c = new Context();

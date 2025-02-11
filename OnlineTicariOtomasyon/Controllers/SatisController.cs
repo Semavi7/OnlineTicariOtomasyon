@@ -107,5 +107,35 @@ namespace OnlineTicariOtomasyon.Content
             var degerler = c.SatisHarekets.Where(x => x.Satisid == id).ToList();
             return View(degerler);
         }
+
+        public ActionResult Deneme()
+        {
+            Class2 cs = new Class2();
+            cs.Kategriler = new SelectList(c.Kategoris, "Kategoriid", "KategorAd");
+            cs.Urunler = new SelectList(c.Uruns, "Urunid", "UrunAd");
+            return View(cs);
+        }
+        public JsonResult UrunGetir(int p)
+        {
+            var urunlistesi = (from x in c.Uruns
+                               join y in c.Kategoris
+                               on x.Kategori.Kategoriid equals y.Kategoriid
+                               where x.Kategori.Kategoriid == p
+                               select new 
+                               {
+                                   Text = x.UrunAd,
+                                   Value = x.Urunid.ToString()
+                               }).ToList();
+            return Json(urunlistesi, JsonRequestBehavior.AllowGet);
+        }
+        
+        public PartialViewResult deneme2()
+        {
+            Class2 cs = new Class2();
+            cs.Kategriler = new SelectList(c.Kategoris, "Kategoriid", "KategorAd");
+            cs.Urunler = new SelectList(c.Uruns, "Urunid", "UrunAd");
+            return PartialView("deneme2", cs);
+        }
+
     }
 }

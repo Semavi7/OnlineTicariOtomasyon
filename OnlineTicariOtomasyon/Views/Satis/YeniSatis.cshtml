@@ -21,8 +21,9 @@
     <h2>Yeni Satış Sayfası</h2>
     <br />
     <form class="form-group" method="post">
-        @Html.LabelFor(x => x.Urun)
-        @Html.DropDownListFor(x => x.UrunId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr1), new { @class = "form-select", id = "single-select-field" })
+        @*@Html.LabelFor(x => x.Urun)
+            @Html.DropDownListFor(x => x.UrunId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr1), new { @class = "form-select", id = "single-select-field" })*@
+        @Html.Action("deneme2", "Satis")
         <br />
         @Html.Label("Cari")
         @Html.DropDownListFor(x => x.CariId, new List<SelectListItem> { new SelectListItem { Text = "Bir Seçim Yapın", Value = "" } }.Concat((List<SelectListItem>)ViewBag.dgr2), new { @class = "form-select", id = "single-select-field1" })
@@ -43,11 +44,7 @@
     </form>
     <script>
 
-    $('#single-select-field').select2({
-        theme: "bootstrap-5",
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        placeholder: "Bir Seçim Yapın",
-    });
+        
 
     $('#single-select-field1').select2({
         theme: "bootstrap-5",
@@ -60,8 +57,8 @@
         width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
         placeholder: "Bir Seçim Yapın",
     });
-       
-    $('#single-select-field').change(function () {
+
+        $('#DrpUrun').change(function () {
         var urunId = $(this).val();
 
         $.ajax({
