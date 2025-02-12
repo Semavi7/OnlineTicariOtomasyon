@@ -1,4 +1,4 @@
-# Mağaza Yönetim Paneli Projesi
+# Online Ticari Otomasyon Projesi
 
 Merhaba! Bu projede ASP.NET MVC 5 ve .NET Framework kullanarak dinamik bir mağaza yönetim sistemi geliştirdim. Proje üç temel panelden oluşuyor:
 
