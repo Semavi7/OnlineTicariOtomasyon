@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Siniflar\Class2.cs" />
+    <Compile Include="Models\Siniflar\Class3.cs" />
     <Compile Include="Models\Siniflar\KargoDetay.cs" />
     <Compile Include="Models\Siniflar\Admin.cs" />
     <Compile Include="Models\Siniflar\Cariler.cs" />
@@ -2969,6 +2970,7 @@
     <Content Include="Views\Error\PageError.cshtml" />
     <Content Include="Views\Satis\Deneme.cshtml" />
     <Content Include="Views\Satis\deneme2.cshtml" />
+    <Content Include="Views\Fatura\Dinamik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
