@@ -16,7 +16,7 @@ namespace OnlineTicariOtomasyon.Controllers
             var degerler = c.Departmans.Where(x => x.Durum == true).ToList();
             return View(degerler);
         }
-
+        [Authorize(Roles = "A")]
         [HttpGet]
         public ActionResult DepartmanEkle()
         {
@@ -26,6 +26,7 @@ namespace OnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult DepartmanEkle(Departman d)
         {
+            d.Durum = true;
             c.Departmans.Add(d);
             c.SaveChanges();
             return RedirectToAction("Index");

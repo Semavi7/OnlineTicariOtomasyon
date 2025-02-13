@@ -35,7 +35,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Ayarlar</a><a class="dropdown-item" href="#">Hesabım</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Çıkış Yap</a>
+                    <a class="dropdown-item" href="/CariPanel/LogOut/">Çıkış Yap</a>
                 </div>
             </li>
         </ul>
@@ -54,10 +54,12 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-flask"></i></div>
                             Ürünler
                         </a>
+
                         <a class="nav-link" href="/Departman/Index/">
                             <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
                             Departmanlar
                         </a>
+
                         <a class="nav-link" href="/Cari/Index/">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Cariler
@@ -131,14 +133,23 @@
                         <a class="nav-link" href="/UrunDetay/Index/">
                             <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                             Urun Detay
+
                         </a>
-                        <a class="nav-link" href="/istatistik/BasitTablolar/">
-                            <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
-                            Hızlı Bakış
-                        </a>
+                        @if (User.IsInRole("A"))
+                        {
+
+                            <a class="nav-link" href="/istatistik/BasitTablolar/">
+                                <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
+                                Hızlı Bakış
+                            </a>
+                        }
                         <a class="nav-link" href="/Yapilacak/Index/">
                             <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
                             To Do List
+                        </a>
+                        <a class="nav-link" href="/CariPanel/LogOut/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                            Çıkış Yap
                         </a>
                     </div>
                 </div>
