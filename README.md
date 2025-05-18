@@ -121,3 +121,17 @@ Ancak proje benim için bitmedi.
 İlerleyen süreçte projeyi katmanlı mimari ile yeniden düzenlemeyi ve Web API ile entegre hale getirmeyi düşünüyorum.
 
 Bu proje, Murat Yücedağ hocanın Udemy'de ki eğitimi kapsamında geliştirildi. Kendisine böyle değerli bir içeriği paylaştığı için teşekkür ederim!
+
+![Screenshot_13](https://github.com/user-attachments/assets/afe54021-3d61-421f-9716-d14c59e81356)
+![Screenshot_12](https://github.com/user-attachments/assets/a82f2a71-2065-48d4-a5a5-50fd428ba0e0)
+![Screenshot_11](https://github.com/user-attachments/assets/6b8e1205-acdb-4271-8cce-2d6832998f15)
+![Screenshot_10](https://github.com/user-attachments/assets/5896e569-cb07-4997-a0ac-80bf8fc8e49e)
+![Screenshot_9](https://github.com/user-attachments/assets/99749d1d-4be1-4e9d-90bb-ee2d7e8243ac)
+![Screenshot_8](https://github.com/user-attachments/assets/a78a2744-2305-41a6-a860-79ec3d931e61)
+![Screenshot_7](https://github.com/user-attachments/assets/acb5912d-cf41-4585-aeb2-38b56d685118)
+![Screenshot_6](https://github.com/user-attachments/assets/365d3b0a-b452-4c03-9874-dc7703f91011)
+![Screenshot_5](https://github.com/user-attachments/assets/f15bd48f-62a3-4015-a861-d50f82312497)
+![Screenshot_4](https://github.com/user-attachments/assets/cdd8d100-3d79-48d3-be6f-ee8254731668)
+![Screenshot_3](https://github.com/user-attachments/assets/61df93b2-2698-42d5-b5f7-5dfc1675fd39)
+![Screenshot_2](https://github.com/user-attachments/assets/dde12415-bbc9-45af-b087-b1d8f4afd2a2)
+![Screenshot_1](https://github.com/user-attachments/assets/f9ee0f2c-8963-4f1a-bc41-34067c1b4325)
