@@ -20,6 +20,7 @@
     <br />
     @Html.Label("Ürünler")
     @Html.DropDownList("DrpUrun", Model.Urunler, "---Ürün Seçiniz---", new { @class = "form-select" })
+    <input type="hidden" name="UrunId" id="hiddenUrunId" />
 </div>
 <script>
     //$('#DrpKategori').select2({
@@ -42,8 +43,8 @@
             $.ajax({
                 url: '/Satis/UrunGetir',
                 data: { p: id },
-                type: "POST",
-                dataType: "Json",
+                type: "GET",
+                dataType: "json",
                 success: function (data) {
                     console.log(data);
 
@@ -65,5 +66,13 @@
 
         });
 
+        $('#DrpUrun').change(function () {
+            var selectedUrunId = $(this).val();
+            $('#hiddenUrunId').val(selectedUrunId);
+            console.log('Seçilen Ürün ID:', selectedUrunId);
+        });
+
     });
+
+    
 </script>
