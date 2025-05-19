@@ -89,37 +89,39 @@
     </p>
 }
 <br />
-<table class="table table-bordered">
-    <tr>
-        <th>ÜRÜN</th>
-        <th>MARKA</th>
-        <th>STOK</th>
-        <th>ALIŞ FİYAT</th>
-        <th>SATIŞ FİYAT</th>
-        <th>KATEGORİ</th>
-        <th>GÖRSEL</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
-        <th>SATIŞ YAP</th>
-    </tr>
-    @foreach (var u in Model)
-    {
+<div class="table-container">
+    <table class="table table-bordered">
         <tr>
-            <td>@u.UrunAd</td>
-            <td>@u.Marka</td>
-            <td>@u.Stok</td>
-            <td>@u.AlisFiyat</td>
-            <td>@u.SatisFiyat</td>
-            <td>@u.Kategori.KategorAd</td>
-            <td>
-                <img src="@u.UrunGörsel" style="width:100px; height:100px" />
-            </td>
-            <td><a href="/Urun/UrunSil/@u.Urunid" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Urun/UrunGetir/@u.Urunid" class="btn btn-success">Güncelle</a></td>
-            <td><a href="/Urun/SatisYap/@u.Urunid" class="btn btn-default" style="background-color: #0094ff; color: white" >Satış Yap</a></td>
+            <th>ÜRÜN</th>
+            <th>MARKA</th>
+            <th>STOK</th>
+            <th>ALIŞ FİYAT</th>
+            <th>SATIŞ FİYAT</th>
+            <th>KATEGORİ</th>
+            <th>GÖRSEL</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+            <th>SATIŞ YAP</th>
         </tr>
-    }
-</table>
-@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
-<a href="/Urun/YeniUrun/" class="btn btn-info">Yeni Ürün</a>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.UrunAd</td>
+                <td>@u.Marka</td>
+                <td>@u.Stok</td>
+                <td>@u.AlisFiyat</td>
+                <td>@u.SatisFiyat</td>
+                <td>@u.Kategori.KategorAd</td>
+                <td>
+                    <img src="@u.UrunGörsel" style="width:100px; height:100px" />
+                </td>
+                <td><a href="/Urun/UrunSil/@u.Urunid" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Urun/UrunGetir/@u.Urunid" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Urun/SatisYap/@u.Urunid" class="btn btn-default" style="background-color: #0094ff; color: white">Satış Yap</a></td>
+            </tr>
+        }
+    </table>
+</div>
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions { LiElementClasses = new List<string> { "page-link" } })
+    <a href="/Urun/YeniUrun/" class="btn btn-info">Yeni Ürün</a>
 
